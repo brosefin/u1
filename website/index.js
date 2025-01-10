@@ -29,9 +29,9 @@ createAllCityBoxes();
 
 //getCityByName
 // function getCityByName (targetCityName) {
-//     '';
+//     h2.textContent = '';
     
-//     for loop through cities array
+//     for of loop through cities array
 //         if
 //             true -> update h2, push city.name?
 //             false -> "Not found"
