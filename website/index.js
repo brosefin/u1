@@ -27,23 +27,24 @@ createAllCityBoxes();
  
 // }
 
-//getCityByName
-// function getCityByName (targetCityName) {
-//     h2.textContent = '';
-    
-//     for of loop through cities array
-//         if
-//             true -> update h2, push city.name?
-//             false -> "Not found"
-// }
-//
-
-
 // Recommended: constants with references to existing HTML-elements
 const main = document.querySelector("main");
 const section = document.getElementById("links");
 const h2 = document.querySelector("h2");
 
-
 // Recommended: Ask for the city name and then the rest of the code
-// const targetCityName = prompt("Enter city");
+const targetCityName = prompt("Enter city");
+
+function getCityByName () {
+    for (let city of cities) {
+        if (city.name == targetCityName) {
+            console.log(city.name);
+            h2.textContent = city.name;
+        } else {
+            console.log("Not found");
+            h2.textContent = "Not found"
+        }
+    }
+}
+
+getCityByName(targetCityName);
