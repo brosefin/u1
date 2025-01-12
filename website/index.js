@@ -23,9 +23,11 @@ createAllCityBoxes();
 //markCityBox (cityObject, kindOfCity)
 
 // function markCityBox (cityObject, kindOfCity){
+//  for ()
 //  if targetCityName == target -> ge klassen .target
  
 // }
+// markCityBox (cityObject, kindOfCity);
 
 // Recommended: constants with references to existing HTML-elements
 const main = document.querySelector("main");
@@ -36,14 +38,19 @@ const h2 = document.querySelector("h2");
 const targetCityName = prompt("Enter city");
 
 function getCityByName () {
+    let cityFound = false;
+
     for (let city of cities) {
-        if (city.name == targetCityName) {
+        if (city.name === targetCityName) {
             console.log(city.name);
             h2.textContent = city.name;
-        } else {
-            console.log("Not found");
-            h2.textContent = "Not found"
+            cityFound = true;
+            break;
         }
+    }
+
+    if (!cityFound) {
+        h2.textContent = `${targetCityName} finns inte i databasen`;
     }
 }
 
