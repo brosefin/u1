@@ -20,6 +20,7 @@ function createAllCityBoxes() {
 
 createAllCityBoxes();
 
+
 //markCityBox (cityObject, kindOfCity)
 
 // function markCityBox (cityObject, kindOfCity){
@@ -31,17 +32,33 @@ createAllCityBoxes();
 
 
 // function getClosestCity () {
+// let closestCity = null;
 //     let shortestDistance = Infinity;
 //     for (let city of cities) {
 
 //     }
+
+
+// ...
+// return closestCity;
 // }
 
 // function getFurthestCity () {
+// let furthestCity = null;
 //     let furthestDistance = 0;
 //     for let (city of cities) {
+    // skapa variabeln för den andra staden
+    // om targetCityName är city1 blir otherCity city2
+//     } else if {
+    // om targetCityName är city2 blir otherCity city1
+    // }
 
-//     }
+    // if (otherCity) {
+    //     om en annan stad hittas och otherCity inte längre är null
+    //     let distance = element.distance
+    // }
+
+// return furthestCity;
 // }
 
 // Recommended: constants with references to existing HTML-elements
@@ -50,7 +67,7 @@ const section = document.getElementById("links");
 const h2 = document.querySelector("h2");
 
 // Recommended: Ask for the city name and then the rest of the code
-// const targetCityName = prompt("Enter city");
+const targetCityName = prompt ("Enter city");
 
 function getCityByName () {
     let cityFound = false;
