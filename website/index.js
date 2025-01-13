@@ -29,13 +29,28 @@ createAllCityBoxes();
 // }
 // markCityBox (cityObject, kindOfCity);
 
+
+// function getClosestCity () {
+//     let shortestDistance = Infinity;
+//     for (let city of cities) {
+
+//     }
+// }
+
+// function getFurthestCity () {
+//     let furthestDistance = 0;
+//     for let (city of cities) {
+
+//     }
+// }
+
 // Recommended: constants with references to existing HTML-elements
 const main = document.querySelector("main");
 const section = document.getElementById("links");
 const h2 = document.querySelector("h2");
 
 // Recommended: Ask for the city name and then the rest of the code
-const targetCityName = prompt("Enter city");
+// const targetCityName = prompt("Enter city");
 
 function getCityByName () {
     let cityFound = false;
@@ -43,7 +58,7 @@ function getCityByName () {
     for (let city of cities) {
         if (city.name === targetCityName) {
             console.log(city.name);
-            h2.textContent = city.name;
+            h2.textContent = city.name + " " + "(" + city.country + ")";
             cityFound = true;
             break;
         }
