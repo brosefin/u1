@@ -55,7 +55,7 @@ function getClosestCity(targetCityName) {
     }
 
     if (closestCity) {
-        console.log(`Närmaste staden till ${targetCityName} är ${closestCity.name}.`);
+        console.log(`Staden närmast till ${targetCityName} är ${closestCity.name}.`);
         markCityBox(closestCity, "closest");
         updateBoxDistance(closestCity, shortestDistance);
         document.getElementById("closest").textContent = closestCity.name;
@@ -88,7 +88,7 @@ function getFurthestCity(targetCityName) {
     }
 
     if (furthestCity) { 
-        console.log(`Den längst bort belägna staden från ${targetCityName} är ${furthestCity.name}.`);
+        console.log(`Staden längst bort från ${targetCityName} är ${furthestCity.name}.`);
         markCityBox(furthestCity, "furthest");
         updateBoxDistance(furthestCity, furthestDistance);
         document.getElementById("furthest").textContent = furthestCity.name;
@@ -113,8 +113,17 @@ function updateBoxDistance(cityObject, distance) {
     }
 }
 
-getClosestCity(targetCityName);
-getFurthestCity(targetCityName);
+// getClosestCity(targetCityName);
+// getFurthestCity(targetCityName);
+
+// function createDistanceTable (?) {
+//     referens till table
+//     console.log?
+
+//     for (let city of cities) {
+
+//     }
+// }
 
 // Recommended: constants with references to existing HTML-elements
 const main = document.querySelector("main");
