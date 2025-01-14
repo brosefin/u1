@@ -1,14 +1,12 @@
 // Recommended: All functions declared here
 const targetCityName = prompt("Enter city");
-// Skapa lista över alla städer
-//createAllCityBoxes
 
+// Skapa lista över alla städer
 function createAllCityBoxes() {
     const citiesDOM = document.getElementById("cities");
     console.log("Function createAllCityBoxes is called");
 
     for (let city of cities) {
-
         if (city.name) {
             let boxDOM = document.createElement("div");
             citiesDOM.appendChild(boxDOM);
@@ -20,7 +18,7 @@ function createAllCityBoxes() {
 
 createAllCityBoxes();
 
-function markCityBox() {
+function markCityBox(cityObject, kindOfCity) {
     const citiesDOM = document.getElementById("cities");
     const cityBoxes = citiesDOM.getElementsByClassName("cityBox");
 
@@ -35,10 +33,7 @@ function markCityBox() {
     }
 }
 
-markCityBox (cityObject, kindOfCity);
-
-
-function getClosestCity() {
+function getClosestCity(targetCityName) {
     let closestCity = null;
     let shortestDistance = Infinity;
 
@@ -61,6 +56,9 @@ function getClosestCity() {
 
     if (closestCity) {
         console.log(`Närmaste staden till ${targetCityName} är ${closestCity.name}.`);
+        markCityBox(closestCity, "closest");
+        updateBoxDistance(closestCity, shortestDistance);
+        document.getElementById("closest").textContent = closestCity.name;
     } else {
         console.log(`${targetCityName} finns inte i databasen.`);
     }
@@ -68,9 +66,7 @@ function getClosestCity() {
     return closestCity;
 }
 
-getClosestCity(targetCityName);
-
-function getFurthestCity (targetCityName) {
+function getFurthestCity(targetCityName) {
     let furthestCity = null;
     let furthestDistance = 0;
 
@@ -92,16 +88,16 @@ function getFurthestCity (targetCityName) {
     }
 
     if (furthestCity) { 
-        console.log(`Den längst bort belägna staden från ${targetCityName} är ${furthestCity.name}.`); 
+        console.log(`Den längst bort belägna staden från ${targetCityName} är ${furthestCity.name}.`);
+        markCityBox(furthestCity, "furthest");
+        updateBoxDistance(furthestCity, furthestDistance);
+        document.getElementById("furthest").textContent = furthestCity.name;
     } else { 
         console.log(`${targetCityName} finns inte i databasen.`); 
     }
 
     return furthestCity;
 }
-
-getFurthestCity(targetCityName);
-
 
 function updateBoxDistance(cityObject, distance) {
     const citiesDOM = document.getElementById("cities");
@@ -117,25 +113,27 @@ function updateBoxDistance(cityObject, distance) {
     }
 }
 
-updateBoxDistance(cityObject, distance)
+getClosestCity(targetCityName);
+getFurthestCity(targetCityName);
 
 // Recommended: constants with references to existing HTML-elements
 const main = document.querySelector("main");
+main.style.fontFamily = "BC-Light";
 const section = document.getElementById("links");
 const h2 = document.querySelector("h2");
 const title = document.querySelector("title");
 
-// Recommended: Ask for the city name and then the rest of the code
 
-function getCityByName () {
+function getCityByName() {
     let cityFound = false;
 
     for (let city of cities) {
         if (city.name === targetCityName) {
+            cityFound = true;
             console.log(city.name);
             h2.textContent = city.name + " " + "(" + city.country + ")";
-            cityFound = true;
             title.textContent = city.name;
+            markCityBox(city, "target");
             break;
         }
     }
