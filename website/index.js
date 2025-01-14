@@ -1,4 +1,3 @@
-// Recommended: All functions declared here
 const targetCityName = prompt("Enter city");
 
 // Skapa lista över alla städer
@@ -15,8 +14,6 @@ function createAllCityBoxes() {
         }
     }
 }
-
-createAllCityBoxes();
 
 function markCityBox(cityObject, kindOfCity) {
     const citiesDOM = document.getElementById("cities");
@@ -113,25 +110,70 @@ function updateBoxDistance(cityObject, distance) {
     }
 }
 
-// getClosestCity(targetCityName);
-// getFurthestCity(targetCityName);
+function createDistanceTable() {
+    const tableDOM = document.getElementById("table");
 
-// function createDistanceTable (?) {
-//     referens till table
-//     console.log?
+    for (let k = 0; k < cities.length; k++) {
+        let headerCell = document.createElement("div");
+        headerCell.classList.add("cell", "head_column");
+        headerCell.textContent = cities[k].id;
+        headerCell.style.gridRow = "1";
+        headerCell.style.gridColumn = k + 2;
+        tableDOM.appendChild(headerCell);
+    }
 
-//     for (let city of cities) {
+    for (let k = 0; k < cities.length; k++) {
+        let rowHeaderCell = document.createElement("div");
+        rowHeaderCell.classList.add("cell", "head_row");
+        rowHeaderCell.textContent = `${cities[k].id} - ${cities[k].name}`;
+        rowHeaderCell.style.gridColumn = "1";
+        rowHeaderCell.style.gridRow = k + 2;
+        tableDOM.appendChild(rowHeaderCell);
+    }
 
-//     }
-// }
+    for (let i = 0; i < cities.length; i++) {
+        for (let j = 0; j < cities.length; j++) {
+            let cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.style.gridColumn = j + 2;
+            cell.style.gridRow = i + 2;
+
+            if (i === j) {
+                cell.textContent = "";
+            } else {
+                let distance = getDistanceBetweenCities(cities[i].id, cities[j].id);
+                cell.textContent = distance !== null ? Math.round(distance / 10) + " km" : "-";
+            }
+
+            if ((j + 1) % 2 === 0) { 
+                cell.classList.add("even_col");
+            }
+            
+            tableDOM.appendChild(cell);
+        }
+    }
+}
+
+function getDistanceBetweenCities(city1Id, city2Id) {
+    for (let i = 0; i < distances.length; i++) {
+        if ((distances[i].city1 === city1Id && distances[i].city2 === city2Id) ||
+            (distances[i].city1 === city2Id && distances[i].city2 === city1Id)) {
+            return distances[i].distance;
+        }
+    }
+    return null;
+}
+
+createAllCityBoxes();
+createDistanceTable();
+getClosestCity(targetCityName);
+getFurthestCity(targetCityName);
 
 // Recommended: constants with references to existing HTML-elements
 const main = document.querySelector("main");
-main.style.fontFamily = "BC-Light";
 const section = document.getElementById("links");
 const h2 = document.querySelector("h2");
 const title = document.querySelector("title");
-
 
 function getCityByName() {
     let cityFound = false;
