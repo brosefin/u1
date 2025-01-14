@@ -1,6 +1,5 @@
 const targetCityName = prompt("Enter city");
 
-// Skapa lista över alla städer
 function createAllCityBoxes() {
     const citiesDOM = document.getElementById("cities");
     console.log("Function createAllCityBoxes is called");
@@ -142,7 +141,7 @@ function createDistanceTable() {
                 cell.textContent = "";
             } else {
                 let distance = getDistanceBetweenCities(cities[i].id, cities[j].id);
-                cell.textContent = distance !== null ? Math.round(distance / 10) + " km" : "-";
+                cell.textContent = distance !== null ? Math.round(distance / 10) : "-";
             }
 
             if ((j + 1) % 2 === 0) { 
@@ -174,6 +173,7 @@ const main = document.querySelector("main");
 const section = document.getElementById("links");
 const h2 = document.querySelector("h2");
 const title = document.querySelector("title");
+const h3 = document.querySelector("h3");
 
 function getCityByName() {
     let cityFound = false;
@@ -190,6 +190,7 @@ function getCityByName() {
     }
 
     if (!cityFound) {
+        h3.textContent = " ";
         h2.textContent = `${targetCityName} finns inte i databasen`;
         title.textContent = "Not found";
     }
